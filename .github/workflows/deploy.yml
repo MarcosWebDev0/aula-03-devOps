@@ -1,0 +1,26 @@
+name: Ambiente desenvolvimento
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+  
+jobs:
+  build:
+    name: compilacao
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+      - name: Configurar jdk 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
+      - name: Compilacao
+        run: mvn -B compila --file pom.xml
+        
