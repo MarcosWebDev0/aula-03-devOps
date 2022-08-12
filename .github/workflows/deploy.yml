@@ -74,6 +74,10 @@ jobs:
         password: ${{ secrets.HEROKU_API_KEY }}
     - name: Criação e envio da imagem
       uses: docker/build-push-action@v3
+      env:
+        HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        
       with:
         push: true
         tags: registry.heroku.com/lab-devops-project/web:latest
