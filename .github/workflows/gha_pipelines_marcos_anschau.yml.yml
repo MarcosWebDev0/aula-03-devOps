@@ -80,7 +80,7 @@ jobs:
         
       with:
         push: true
-        tags: registry.heroku.com/lab-devops-project/web:latest
+        tags: registry.heroku.com/hello-docker/web:latest
 
   deploy:
     name: Publica ambiente Desenvolvimento
@@ -95,7 +95,7 @@ jobs:
         username: ${{ secrets.HEROKU_EMAIL }}
         password: ${{ secrets.HEROKU_API_KEY }}
     - name: Publicação
-      run: heroku container:release -a lab-devops-project web 
+      run: heroku container:release -a hello-docker web 
       env:
         HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
